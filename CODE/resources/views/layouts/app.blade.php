@@ -11,26 +11,21 @@
 
     <title>Stand CSS Blog by TemplateMo</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
-    <!-- Additional CSS Files -->
+    
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-stand-blog.css">
     <link rel="stylesheet" href="assets/css/owl.css">
-    <!--
+  
 
-TemplateMo 551 Stand Blog
 
-https://templatemo.com/tm-551-stand-blog
-
--->
 </head>
 
 <body>
 
-    <!-- ***** Preloader Start ***** -->
+   
     <div id="preloader">
         <div class="jumper">
             <div></div>
@@ -38,12 +33,12 @@ https://templatemo.com/tm-551-stand-blog
             <div></div>
         </div>
     </div>
-    <!-- ***** Preloader End ***** -->
+    
 
-    <!-- Header -->
+    
     @include('layouts.navbar')
 
-    <!-- Page Content -->
+    
     @yield('content')
 
 
