@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[ArticleController::class,'index']);
+Route::get('/articles/{id}',[ArticleController::class, 'show'])->name('articles.show');
+Route::get('/articles',[ArticleController::class, 'all'])->name('articles.all');
 
 Route::post('login', [AuthController::class, 'login'])->name('login');
 Route::post('register', [AuthController::class, 'register'])->name('register');

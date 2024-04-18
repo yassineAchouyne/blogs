@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <style>
     .text-box {
         height: auto;
@@ -12,49 +13,39 @@
         line-height: 1.5;
     }
 </style>
-<div class="main-banner header-text">
-    <div class="container-fluid">
-        <div class="owl-banner owl-carousel">
-            @foreach($articles as $article)
-            <div class="item">
-                <img src="{{$article->image}}" alt="" style="height:375px">
-                <div class="item-content">
-                    <div class="main-content">
-                        <div class="meta-category">
-                            <span>{{$article->tag}}</span>
-                        </div>
-                        <a href="{{route('articles.show',['id'=>$article->id])}}">
-                            <h4>{{$article->title}}</h4>
-                        </a>
-                        <ul class="post-info">
-                            <li><a href="#">Admin</a></li>
-                            <li><a href="#">{{Carbon\Carbon::parse($article->date)->format('F j, Y');}}</a></li>
-                            <li><a href="#">00 Comments</a></li>
-                        </ul>
+
+<!-- Page Content -->
+<!-- Banner Starts Here -->
+<div class="heading-page header-text">
+    <section class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text-content">
+                        <h4>Recent Posts</h4>
+                        <h2>Our Recent Blog Entries</h2>
                     </div>
                 </div>
             </div>
-            @endforeach
-
         </div>
-    </div>
+    </section>
 </div>
 
 
 
 
-
-<section class="blog-posts">
+<section class="blog-posts grid-system">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="all-blog-posts">
                     <div class="row">
+
                         @foreach($articles as $article)
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="blog-post">
                                 <div class="blog-thumb">
-                                    <img src="{{$article->image}}" alt="">
+                                    <img src="{{asset($article->image)}}" alt="" style="height:321px">
                                 </div>
                                 <div class="down-content">
                                     <span>{{$article->tag}}</span>
@@ -69,17 +60,10 @@
                                     <p class="text-box">{!!$article->content!!}</p>
                                     <div class="post-options">
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-lg-12">
                                                 <ul class="post-tags">
                                                     <li><i class="fa fa-tags"></i></li>
                                                     <li>{{$article->keyword}}</li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-6">
-                                                <ul class="post-share">
-                                                    <li><i class="fa fa-share-alt"></i></li>
-                                                    <li><a href="#">Facebook</a>,</li>
-                                                    <li><a href="#"> Twitter</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -88,12 +72,6 @@
                             </div>
                         </div>
                         @endforeach
-
-                        <div class="col-lg-12">
-                            <div class="main-button">
-                                <a href="{{route('articles.all')}}">View All Posts</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -140,28 +118,12 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="col-lg-12">
-                            <div class="sidebar-item tags">
-                                <div class="sidebar-heading">
-                                    <h2>Tag Clouds</h2>
-                                </div>
-                                <div class="content">
-                                    <ul>
-                                        <li><a href="#">Lifestyle</a></li>
-                                        <li><a href="#">Creative</a></li>
-                                        <li><a href="#">HTML5</a></li>
-                                        <li><a href="#">Inspiration</a></li>
-                                        <li><a href="#">Motivation</a></li>
-                                        <li><a href="#">PSD</a></li>
-                                        <li><a href="#">Responsive</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div> --}}
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 @endsection

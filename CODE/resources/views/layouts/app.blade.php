@@ -11,21 +11,21 @@
 
     <title>UP Blog</title>
 
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
 
-    
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-stand-blog.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-  
+
+    <link rel="stylesheet" href="{{asset('assets/css/fontawesome.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/templatemo-stand-blog.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/owl.css')}}">
+
 
 
 </head>
 
 <body>
 
-   
+
     <div id="preloader">
         <div class="jumper">
             <div></div>
@@ -33,12 +33,12 @@
             <div></div>
         </div>
     </div>
-    
 
-    
+
+
     @include('layouts.navbar')
 
-    
+
     @yield('content')
 
 

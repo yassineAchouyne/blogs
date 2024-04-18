@@ -15,8 +15,16 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
+        $resarticles = Article::orderBy('created_at', 'desc')->take(3)->get();
         $categories = Categorie::all();
-        return view('accueil',compact('articles','categories'));
+        return view('accueil',compact('articles','categories', 'resarticles'));
+    }
+    public function all()
+    {
+        $articles = Article::all();
+        $resarticles = Article::orderBy('created_at', 'desc')->take(3)->get();
+        $categories = Categorie::all();
+        return view('articles', compact('articles', 'categories', 'resarticles'));
     }
 
     /**
@@ -38,9 +46,12 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Article $article)
+    public function show($id)
     {
-        //
+        $articles = Article::orderBy('created_at', 'desc')->take(3)->get();
+        $article  = Article::find($id);
+        $categories = Categorie::all();
+        return view('details', compact('article', 'articles', 'categories'));
     }
 
     /**

@@ -16,9 +16,10 @@
         right: 3px;
     }
 
-#show:hover{
-    cursor:pointer;
-}
+    #show:hover {
+        cursor: pointer;
+    }
+
     .main {
         width: 350px;
         height: 500px;
@@ -123,18 +124,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item  {{request()->path() == '/' ? 'active':''}}">
                         <a class="nav-link" href="/">Home </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">About Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Blog Entries</a>
+                    <li class="nav-item {{request()->path() == 'articles' ? 'active':''}}">
+                        <a class="nav-link" href="{{route('articles.all')}}">Blog Entries</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Post Details</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="">Contact Us</a>
                     </li>
@@ -195,4 +194,3 @@
         document.getElementsByClassName('model-tog')[0].style.display = "flex";
     });
 </script>
-
