@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Http\Controllers\Controller;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -17,7 +18,14 @@ class ArticleController extends Controller
         $articles = Article::all();
         $resarticles = Article::orderBy('created_at', 'desc')->take(3)->get();
         $categories = Categorie::all();
-        return view('accueil',compact('articles','categories', 'resarticles'));
+        return view('accueil', compact('articles', 'categories', 'resarticles'));
+    }
+    public function dashboard()
+    {
+        $articles = Article::all();
+        $categories = Categorie::all();
+
+        return view('admin.dashboard', compact('articles', 'categories'));
     }
     public function all()
     {
@@ -32,9 +40,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        
-            return view('article.create');
-        
+
+        return view('article.create');
     }
 
     /**
@@ -42,17 +49,24 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-    $request->validate([
-        'title' => 'required|max:255',
-        'content' => 'required',
-    ]);
-    $article = new Article();
-    $article->title = $request->title;
-    $article->content = $request->content;
-    $article->save();
-    return redirect()->route('article.create')->with('success', 'Article created successfully.');
+        // return $request;
+        $article = new Article();
+        $article->title = $request->title;
+        $article->user_id = Auth::id();
+        $article->content = $request->content;
+        $article->tag = $request->tag;
+        $article->keyword = $request->keyword;
+        $article->categorie_id = $request->categorie;
+        $article->date = date('Y-m-d');
 
-
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('images', $filename, 'public');
+            $article->image = $path;
+        }
+        $article->save();
+        return back()->with('success', 'Article add successfully');
     }
 
     /**
@@ -79,7 +93,22 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        // return $request;
+        $article->title = $request->title;
+        $article->content = $request->content;
+        $article->tag = $request->tag;
+        $article->keyword = $request->keyword;
+        $article->categorie_id = $request->categorie;
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('images', $filename, 'public');
+
+            $article->image = $path;
+        }
+        $article->save();
+        return back()->with('success', 'Article updated successfully');
     }
 
     /**
@@ -87,8 +116,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        return back()->with('success', 'Article deleted successfully');
     }
-
-
 }

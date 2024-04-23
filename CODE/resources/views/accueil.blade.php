@@ -17,7 +17,7 @@
         <div class="owl-banner owl-carousel">
             @foreach($articles as $article)
             <div class="item">
-                <img src="{{$article->image}}" alt="" style="height:375px">
+                <img src="{{Storage::url($article->image)}}" alt="" style="height:375px">
                 <div class="item-content">
                     <div class="main-content">
                         <div class="meta-category">
@@ -54,7 +54,7 @@
                         <div class="col-lg-12">
                             <div class="blog-post">
                                 <div class="blog-thumb">
-                                    <img src="{{$article->image}}" alt="">
+                                    <img src="{{Storage::url($article->image)}}" alt="">
                                 </div>
                                 <div class="down-content">
                                     <span>{{$article->tag}}</span>

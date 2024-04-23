@@ -124,29 +124,20 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item  {{request()->path() == '/' ? 'active':''}}">
-                        <a class="nav-link" href="/">Home </a>
+                    <li class="nav-item  {{request()->path() == 'dashboard' ? 'active':''}}">
+                        <a class="nav-link" href="/dashboard">Articles</a>
                     </li>
-
-                    <li class="nav-item {{request()->path() == 'articles' ? 'active':''}}">
-                        <a class="nav-link" href="{{route('articles.all')}}">Blog Entries</a>
+                    <li class="nav-item {{request()->path() == 'categorie' ? 'active':''}}">
+                        <a class="nav-link" href="{{route('categorie')}}">Categories</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{request()->path() == 'about' ? 'active':''}}" href="/about">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{request()->path() == 'contact' ? 'active':''}}" href="/contact">Contact Us</a>
-                    </li>
-
                     @if(Auth::check())
-
                     <div class="dropdown show">
                         <a class="btn dropdown-toggle" style="color: #fff;background-color: #f48840;border-color: #f27420c2;" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Hi {{ Auth::user()->name }}
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="{{route('dashboard')}}">Dashboard</a>
+                            <a class="dropdown-item" href="/">Accueil</a>
                             <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
                         </div>
                     </div>

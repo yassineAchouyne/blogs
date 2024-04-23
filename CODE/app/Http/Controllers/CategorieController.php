@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categorie;
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 class CategorieController extends Controller
@@ -13,7 +14,9 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Categorie::all();
+
+        return view('admin.categorie', compact('categories'));
     }
 
     /**
@@ -29,7 +32,10 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categorie = new Categorie();
+        $categorie->title = $request->title;
+        $categorie->save();
+        return back()->with('success', 'Categorie add successfully');
     }
 
     /**
@@ -53,7 +59,9 @@ class CategorieController extends Controller
      */
     public function update(Request $request, Categorie $categorie)
     {
-        //
+        $categorie->title = $request->title;
+        $categorie->save();
+        return back()->with('success', 'Categorie updated successfully');
     }
 
     /**
@@ -61,6 +69,8 @@ class CategorieController extends Controller
      */
     public function destroy(Categorie $categorie)
     {
-        //
+        $categorie->delete();
+
+        return back()->with('success', 'Categorie deleted successfully');
     }
 }
