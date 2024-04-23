@@ -32,7 +32,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        
+            return view('article.create');
+        
     }
 
     /**
@@ -40,7 +42,17 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    $request->validate([
+        'title' => 'required|max:255',
+        'content' => 'required',
+    ]);
+    $article = new Article();
+    $article->title = $request->title;
+    $article->content = $request->content;
+    $article->save();
+    return redirect()->route('article.create')->with('success', 'Article created successfully.');
+
+
     }
 
     /**
@@ -77,4 +89,6 @@ class ArticleController extends Controller
     {
         //
     }
+
+
 }

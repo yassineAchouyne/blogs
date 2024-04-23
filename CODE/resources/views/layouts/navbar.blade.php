@@ -146,6 +146,9 @@
                     <li class="nav-item">
                         <a class="nav-link" id="show">Login</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="show">datshBorad</a>
+                    </li>
                     @endif
 
                 </ul>
@@ -180,6 +183,40 @@
         <img src="img/retirer.png" id="close" />
     </div>
 </div>
+{{-- <div class="datshBorad">
+    <form action="{{route('datshBorad')}}" method="post"> @csrf
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">ID</th>
+                    <th>Name</th>
+                    <th>title</th>
+                    <th>date</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    
+                    <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" class="btn btn-info btn-sm btn-icon">
+                            <i class="tim-icons icon-single-02"></i>
+                        </button>
+                        <button type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                            <i class="tim-icons icon-settings"></i>
+                        </button>
+                        <button type="button" rel="tooltip" class="btn btn-danger btn-sm btn-icon">
+                            <i class="tim-icons icon-simple-remove"></i>
+                        </button>
+                    </td>
+                </tr>
+              
+               
+            </tbody>
+        </table>
+    </form>
+
+</div> --}}
 
 
 
